@@ -28,14 +28,29 @@ body {
 #screenshotsContainer {
   display: flex;
   position: fixed;
+  padding: 10px 0;
   bottom: 0;
   height: 25vh;
   width: 100vw;
   z-index: -99;
-  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 #screenshotsContainer img {
+  position: relative;
   height: 100%;
   margin: 0 10px;
   border-radius: 6px;
+  animation-duration: 500ms;
+  animation-name: slideIn;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

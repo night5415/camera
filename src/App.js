@@ -13,17 +13,36 @@ function App() {
       img = document.createElement("img"),
       screenshotsContainer = document.getElementById("screenshotsContainer");
 
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext("2d").drawImage(video, 0, 0);
+    let mediaRecorder = new MediaRecorder(video.srcObject);
+    mediaRecorder.start();
+    window.mike = mediaRecorder;
+    mediaRecorder.onstop = function (e) {};
 
-    //maybe save all?
+    mediaRecorder.ondataavailable = function (e) {
+      //const blob = new Blob(e.data, { type: "video/mp4" });
+      var url = URL.createObjectURL(e.data);
+      var save = document.createElement("video");
+      save.controls = true;
+      save.src = url;
+      save.load();
+      save.onloadeddata = function () {
+        save.play();
+      };
+
+      screenshotsContainer.appendChild(save);
+    };
+
+    // canvas.width = video.videoWidth;
+    // canvas.height = video.videoHeight;
+    // canvas.getContext("2d").drawImage(video, 0, 0);
+
+    // //maybe save all?
     // Array.from(screenshotsContainer.children).forEach((child) => {
     //   screenshotsContainer.removeChild(child);
     // });
 
-    img.src = canvas.toDataURL("image/png");
-    screenshotsContainer.prepend(img);
+    // img.src = canvas.toDataURL("image/png");
+    // screenshotsContainer.prepend(img);
   };
 
   return (
