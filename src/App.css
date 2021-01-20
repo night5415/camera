@@ -1,36 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+* {
+  box-sizing: border-box;
+}
 #myVideo {
   position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100vw;
-  min-height: 100vh;
-  background-color: red;
+  top: 0;
+  width: 100vw;
   z-index: -100;
 }
-.player {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  text-align: center;
-  padding: 2em;
-}
-.player input {
+
+.snap {
   font-size: 2em;
   border: none;
-  background-color: black;
+  background-color: red;
   color: #fff;
-  border-radius: 8px;
-  padding: 5px 15px;
+  border-radius: 50%;
+  padding: 10px 17px;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
 }
 
 #screenshotsContainer {
+  display: flex;
   position: fixed;
-  bottom: 1em;
-  right: 5em;
-  height: 150px;
-  width: 150px;
-  border: 1px solid #000;
+  bottom: 0;
+  height: 25vh;
+  width: 100vw;
+  z-index: -99;
+  overflow: scroll;
 }
-img {
+#screenshotsContainer img {
   height: 100%;
+  margin: 0 10px;
+  border-radius: 6px;
 }

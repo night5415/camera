@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
@@ -19,19 +18,18 @@ function App() {
     canvas.getContext("2d").drawImage(video, 0, 0);
 
     //maybe save all?
-    Array.from(screenshotsContainer.children).forEach((child) => {
-      screenshotsContainer.removeChild(child);
-    });
+    // Array.from(screenshotsContainer.children).forEach((child) => {
+    //   screenshotsContainer.removeChild(child);
+    // });
 
     img.src = canvas.toDataURL("image/png");
-    screenshotsContainer.appendChild(img);
+    screenshotsContainer.prepend(img);
   };
+
   return (
     <>
-      <video id="myVideo" autoPlay></video>
-      <div className="player">
-        <input type="button" value="Snap" onClick={handler} />
-      </div>
+      <video autoPlay id="myVideo" muted playsInline></video>
+      <input className="snap" type="button" value="S" onClick={handler} />
       <div id="screenshotsContainer"></div>
     </>
   );
